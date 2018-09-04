@@ -1,1 +1,7 @@
-exportPattern("^[[:alpha:]]+")
+#exportPattern("^[[:alpha:]]+")
+export(
+  "crse",
+  "matrix_conversion")
+import(methods)
+import(stats)
+importFrom(sandwich, vcovCL)

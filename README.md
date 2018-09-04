@@ -2,19 +2,18 @@
 
 Overview
 --------
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/monotonicity)](https://cran.r-project.org/package=monotonicity)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/crseEventStudy)](https://cran.r-project.org/package=crseEventStudy)
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Travis-CI Build Status](https://travis-ci.org/skoestlmeier/monotonicity.svg?branch=master)](https://travis-ci.org/skoestlmeier/monotonicity)
-[![Build status](https://ci.appveyor.com/api/projects/status/nsrpduvdn28gf78r?svg=true)](https://ci.appveyor.com/project/skoestlmeier/monotonicity)
-[![codecov](https://codecov.io/gh/skoestlmeier/monotonicity/branch/master/graph/badge.svg)](https://codecov.io/gh/skoestlmeier/monotonicity)
-[![Total Downloads](https://cranlogs.r-pkg.org/badges/grand-total/monotonicity?color=blue)](https://CRAN.R-project.org/package=monotonicity)
+[![Travis-CI Build Status](https://travis-ci.org/skoestlmeier/crseEventStudy.svg?branch=master)](https://travis-ci.org/skoestlmeier/crseEventStudy)
+[![Build status](https://ci.appveyor.com/api/projects/status/nsrpduvdn28gf78r?svg=true)](https://ci.appveyor.com/project/skoestlmeier/crseEventStudy)
+[![codecov](https://codecov.io/gh/skoestlmeier/crseEventStudy/branch/master/graph/badge.svg)](https://codecov.io/gh/skoestlmeier/crseEventStudy)
+[![Total Downloads](https://cranlogs.r-pkg.org/badges/grand-total/crseEventStudy?color=blue)](https://CRAN.R-project.org/package=crseEventStudy)
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 
-`monotonicity` is an R package providing several monotonicity tests for asset returns based on portfolio sorts. It's first version is mainly based on the paper *[Monotonicity in asset returns: New testes with applications to the term structure, the CAPM, and portfolio sorts](https://doi.org/10.1016/0304-4076(89)90094-8)* by Andrew Patton and Allan Timmermann. Please see Andrew Pattons [Matlab code page Nr. 8](https://public.econ.duke.edu/~ap172/code.html) for the original Matlab code or his *[Exec&Share profile](http://www.execandshare.org/CompanionSite/site.do?siteId=56)* providing an online executable version of monotonicity tests.
-
+`crseEventStudy` is an R package providing a standardized test for abnormal returns in long-horizon event studies that takes into accoutncross-sectional correltaion, autocorrelation, and heteroskedasticity of stock returns. The test is proposed in the paper *[A robust and powerful test of abnormal stock returns in long-horizon event studies](https://doi.org/10.1016/j.jempfin.2018.02.004)* by Anupam Dutta, Johan Knif, James W. Kolari and Seppo Pynnonen.
 
 ### Key Features
-Functions for monotonicity tests on asset returns based on portfolio sorts:
+Functions for crseEventStudy for testing abnormal stock returns in long-horizon event studies:
 
 * Wolak Test
 * Up and Down Test
@@ -25,12 +24,12 @@ Functions for monotonicity tests on asset returns based on portfolio sorts:
 Installation
 ------------
 ```r
-# The easiest way to install monotonicity is to download via CRAN
-install.packages("monotonicity")
+# The easiest way to install crseEventStudy is to download via CRAN
+install.packages("crseEventStudy")
 
 # Alternatively, you can install the development version from GitHub
 # install.packages("devtools")
-devtools::install_github("skoestlmeier/monotonicity")
+devtools::install_github("skoestlmeier/crseEventStudy")
 ```
 Notes
 -----

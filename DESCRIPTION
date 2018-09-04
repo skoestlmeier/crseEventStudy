@@ -1,11 +1,13 @@
 Package: crseEventStudy
 Type: Package
-Title: What the Package Does (Title Case)
-Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Title: A Robust and Powerful Test of Abnormal Stock Returns in Long-Horizon Event Studies
+Version: 1.0
+Authors@R: c(person(given = "Siegfried", family = "Köstlmeier", role = c("aut", "cre", "trl"), email = "siegfried.koestlmeier@gmail.com"))
+Maintainer: Siegfried Köstlmeier <siegfried.koestlmeier@gmail.com>
+Description: This package provides the standardized test for abnormal returns in long-horizon event studies developed by Dutta et al. (2018) <doi:10.1016/j.jempfin.2018.02.004>. The methods used improve the major weaknesses of size, power, and robustness of long-run statistical tests described in Kothari/Warner (2007) <doi:10.1016/S1873-1503(06)01001-4>. Abnormal returns are weighted by their statistical precision (i.e., standard deviation), resulting in abnormal standardized returns. This procedure efficiently captures the heteroskedasticity problem. Clustering techniques following Cameron et al. (2011) <10.1198/jbes.2010.07136> are adopted for computing cross-sectional correlation robust standard errors. The statistical tests in this package therefore accounts for potential biases arising from returns' cross-sectional correlation, autocorrelation, and volatility clustering without power loss.
+License: BSD_3_clause + file LICENSE
+Imports: methods, stats, sandwich
+Suggests: testthat
+Depends: R (>= 3.3)
 Encoding: UTF-8
 LazyData: true
