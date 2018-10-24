@@ -1,8 +1,8 @@
-\name{crse}
-\alias{crse}
+\name{crseEvent}
+\alias{crseEvent}
 \title{Clustering robust t-statistics for ASR and CCAR type abnormal returns in long-horizon event studies}
 \description{
-  \code{crse} implements a robust statistical test developed by Dutta et al. (JoEF, 2018).
+  \code{crseEvent} implements a robust statistical test developed by Dutta et al. (JoEF, 2018).
 
 The test is based on abnormal standardized returns and offers two implementations. Standardized returns are defined as \eqn{sr_{it} = \frac{r_{it}}{s_{it}}} where \eqn{s_{it}} is a standard deviation estimator of log returns \eqn{r_{it}}:
 
@@ -16,7 +16,7 @@ Continuously compounded abnormal returns are defined as \eqn{CCAR{it} = r_{it} -
 
 }
 \usage{
-crse(data, abnr = "asr", cluster1 = "yyyymm",
+crseEvent(data, abnr = "asr", cluster1 = "yyyymm",
   cluster2 = NULL, na.rm = TRUE, na.replace = 0)
 }
 \arguments{
@@ -36,9 +36,9 @@ crse(data, abnr = "asr", cluster1 = "yyyymm",
 }
 
 \value{
-  \code{crse} returns an object of \code{\link{class}} \code{"data.frame"}.
+  \code{crseEvent} returns an object of \code{\link{class}} \code{"data.frame"}.
 
-  The returning value of \code{"crse"} is a \code{"data.frame"} containing the
+  The returning value of \code{"crseEvent"} is a \code{"data.frame"} containing the
   following components:
 
   \item{TopMinusBottom}{Mean difference return between top and bottom portfolio.}

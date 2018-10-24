@@ -15,11 +15,7 @@ Overview
 ### Key Features
 Functions for crseEventStudy for testing abnormal stock returns in long-horizon event studies:
 
-* Wolak Test
-* Up and Down Test
-* MR (Monotonic Relationship) Test
-* Weak monotonicity test using Bonferroni bounds
-* Stationary Bootstrap Simulation
+* crseEvent
 
 Installation
 ------------
@@ -33,18 +29,15 @@ devtools::install_github("skoestlmeier/crseEventStudy")
 ```
 Notes
 -----
-The monotonicity tests provided by this package are mostly based on simulated bootstrap samples. The results may therefore slightly differ for repeated tests.
+The method `crseEvent` is based on abnormal standardized returns and offers two implementations. Standardized returns are defined as \eqn{sr_{it} = \frac{r_{it}}{s_{it}}} where \eqn{s_{it}} is a standard deviation estimator of log returns \eqn{r_{it}}:
 
-For an estimation of the variation of the results, we exemplarily run the MR (Monotonic Relationship) Test provided by the function `monoRelation` 1,000 times with identical input data. We observed the following results for the mean studentised p-value, using the provided R package and in comparison Andrew Pattons original Matlab code:
+\strong{Use of Abnormal standardized returns (ASR)}
 
+Abnormal standardized returns are defined as \eqn{ASR_{it} = sr_{it} - sr_{ci,t}}, where \eqn{sr_{ci,t}} is the standardized return of the matching control firm or the average of standardized returns of the matching control portfolio.
 
-| Software | Mean | Minimum | Maximum | Standard Deviation
-| --- | --- | --- | --- | ---|
-| Matlab | 0.032 | 0.014 | 0.047 | 0.0057
-| R | 0.031 | 0.018 | 0.048 | 0.0064
+\strong{Use of Continuously compounded abnormal returns (CCAR)}
 
-In fact, the observed variation seems to be acceptable and should not affect any decision based on the returning p-value, when using the recommended number of 1,000 bootstrap replications.
-
+Continuously compounded abnormal returns are defined as \eqn{CCAR{it} = r_{it} - r_{ci,t}}, where \eqn{r_{it} = log(1 + R_{it}} is the event month \eqn{t} continuously compounded return (i.e., log return) of event stock \eqn{i}, and \eqn{r_{ci,t}} is the continuously compounded return of the control firm.
 
 Contributing
 ------------

@@ -5,7 +5,7 @@
 ## Disclaimer: Absolutely no warranty.                                                       #
 ##############################################################################################
 #
-crse <- function(data, # data, containing abnormal returns (by series name defined in abnr) and clusering series
+crseEvent <- function(data, # data, containing abnormal returns (by series name defined in abnr) and clusering series
                         # named by cluster1 (and by cluste2 if two-way clustering)
                    abnr = "asr", # name of the abnormal return series in data (default asr)
                    cluster1 = "yyyymm", # first clustering series name in data (default yyyymm, i.e., year month yyyymm)
@@ -16,9 +16,6 @@ crse <- function(data, # data, containing abnormal returns (by series name defin
                      # and t-values
     ## produces clustering robust t-stats etc
 
-  ###
-  #   NOCH MIT ORIGINAL DATEI TESTEN, OB WIRKLICH IDENTISCH!!!
-  ###
   if (missing(data)) {
     stop("Variable 'data' is missing.")
   }
@@ -82,37 +79,34 @@ crse <- function(data, # data, containing abnormal returns (by series name defin
         } # if cluster and cluster2
     } # if cluster1
 
-    #colnames(table1b) <-  c("TopMinusBottom", "t_stat", "t_pval", "MR_pval", "MRall_pval", "UP_pval", "DOWN_pval", "Wolak_pval", "Bonferroni_pval")
-
-    #cat("\n")
-
-    #table1b <- specify_decimal(table1b, 3)
-    #table1b <- data.frame(table1b, stringsAsFactors = FALSE)
-
-    #for(i in 1:9){
-    #  table1b[[i]] <- as.numeric(table1b[[i]])
-    #}
-
-    #return(table1b)
+    table <- as.data.frame(matrix(nrow = 1, ncol = 17))
+    colnames(table) <- c("N", "mean.abnormal.ret", "t.val.nonclustered", "p.val.nonclustered",
+                         "t.val.one.clustered", "p.val.one.clustered", "tcl2", "pcl2", "tcl12",
+                         "pcl12", "cluster1", "cluster2", "var.cl1", "var.cl2", "var.cl12",
+                         "unique.cl1", "unique.cl2")
 
 
-    return(list(mean.abnormal.ret = reg.summ$coef[1], # mean abnormal return
-                t.val.nonclustered = t.cl0, # non-clustered t
-                p.val.nonclustered = p.cl0, # p-value of tcl0
-                t.val.one.clustered = t.cl1, # 1-way custering t-value
-                p.val.one.clustered = p.cl1, # p-value of tcl1
-                tcl2 = t.cl2, # 1-way clustering t-val with respect to second clustering variable (NA if cluster2 = NULL)
-                pcl2 = p.cl2, # p-value of tcl2
-                tcl12 = t.cl12, # 2-way clustering t-value (NA if cluster2 = NULL)
-                pcl12 = p.cl12, # p-value of tcl12
-                cluster1 = cluster1,
-                cluster2 = cluster2,
-                reg.fit = reg.summ, # regression results on which t-value compuations are based
+    table$N = nrow(data)
+    table$mean.abnormal.ret = reg.summ$coef[1] # mean abnormal return
+    table$t.val.nonclustered = t.cl0 # non-clustered t
+    table$p.val.nonclustered = p.cl0 # p-value of tcl0
+    table$t.val.one.clustered = t.cl1 # 1-way custering t-value
+    table$p.val.one.clustered = p.cl1 # p-value of tcl1
+    table$tcl2 = t.cl2 # 1-way clustering t-val with respect to second clustering variable (NA if cluster2 = NULL)
+    table$pcl2 = p.cl2 # p-value of tcl2
+    table$tcl12 = t.cl12 # 2-way clustering t-value (NA if cluster2 = NULL)
+    table$pcl12 = p.cl12 # p-value of tcl12
+    table$cluster1 = cluster1
+    table$cluster2 = cluster2
 
-                # Variance of standard error -> mean / sqrt(vcl1) is t-val robust
-                vcl1 = vcl1, vcl2 = vcl2, vcl12 = vcl12,
-                cl1 = list(M = M1, N = nrow(data)),
-                cl2 = list(M = M2, N = nrow(data))
-                ) # list
-           ) # return
+    # Variance of standard error -> mean / sqrt(vcl1) is t-val robust
+    table$var.cl1 = if(!is.na(vcl1)){vcl1[1,1]}else{NA}
+    table$var.cl2 = if(!is.na(vcl2)){vcl2[1,1]}else{NA}
+    table$var.cl12 = if(!is.na(vcl12)){vcl12[1,1]}else{NA}
+    table$unique.cl1 = M1
+    table$unique.cl2 = M2
+
+    cat("\n")
+    return(table)
+
 }

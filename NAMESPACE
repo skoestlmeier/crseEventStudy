@@ -1,6 +1,6 @@
 #exportPattern("^[[:alpha:]]+")
 export(
-  "crse")
+  "crseEvent")
 import(methods)
 import(stats)
 importFrom(sandwich, vcovCL)
