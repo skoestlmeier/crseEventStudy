@@ -31,11 +31,11 @@ Notes
 -----
 Standardized returns are defined as the ratio of log-returns and their standard deviation estimator. The method `crseEvent` is based on abnormal standardized returns and offers two implementations:
 
-* Abnormal standardized returns (ASR):
+* **Abnormal standardized returns (ASR)**
 
   Abnormal standardized returns are defined as the excess standardized returns relative to the standardized return of a matching control firm or relative to the average of standardized returns of a matching control portfolio.
 
-* Continuously compounded abnormal returns (CCAR):
+* **Continuously compounded abnormal returns (CCAR)**
 
   Continuously compounded abnormal returns first consider their relative performance. First, the monthly continuously compounded return (i.e., log return) of the event stock is subtracted by the continuously compounded return of the control firm (or control portfolio). Second, this resulting excess return is divided by a robust standard deviation estimator for the excess return.
 
