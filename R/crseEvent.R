@@ -79,34 +79,83 @@ crseEvent <- function(data, # data, containing abnormal returns (by series name 
         } # if cluster and cluster2
     } # if cluster1
 
-    table <- as.data.frame(matrix(nrow = 1, ncol = 17))
-    colnames(table) <- c("N", "mean.abnormal.ret", "t.val.nonclustered", "p.val.nonclustered",
-                         "t.val.one.clustered", "p.val.one.clustered", "tcl2", "pcl2", "tcl12",
-                         "pcl12", "cluster1", "cluster2", "var.cl1", "var.cl2", "var.cl12",
-                         "unique.cl1", "unique.cl2")
 
+    # table <- as.data.frame(matrix(nrow = 1, ncol = 17))
+    # colnames(table) <- c("N", "mean.abnormal.ret", "t.val.nonclustered", "p.val.nonclustered",
+    #                      "t.val.one.clustered", "p.val.one.clustered", "tcl2", "pcl2", "tcl12",
+    #                      "pcl12", "cluster1", "cluster2", "var.cl1", "var.cl2", "var.cl12",
+    #                      "unique.cl1", "unique.cl2")
+    #
+    #
+    # table$N = nrow(data)
+    # table$mean.abnormal.ret = reg.summ$coef[1] # mean abnormal return
+    # table$t.val.nonclustered = t.cl0 # non-clustered t
+    # table$p.val.nonclustered = p.cl0 # p-value of tcl0
+    # table$t.val.one.clustered = t.cl1 # 1-way custering t-value
+    # table$p.val.one.clustered = p.cl1 # p-value of tcl1
+    # table$tcl2 = t.cl2 # 1-way clustering t-val with respect to second clustering variable (NA if cluster2 = NULL)
+    # table$pcl2 = p.cl2 # p-value of tcl2
+    # table$tcl12 = t.cl12 # 2-way clustering t-value (NA if cluster2 = NULL)
+    # table$pcl12 = p.cl12 # p-value of tcl12
+    # table$cluster1 = cluster1
+    # table$cluster2 = cluster2
+    #
+    # # Variance of standard error -> mean / sqrt(vcl1) is t-val robust
+    # table$var.cl1 = if(!is.na(vcl1)){vcl1[1,1]}else{NA}
+    # table$var.cl2 = if(!is.na(vcl2)){vcl2[1,1]}else{NA}
+    # table$var.cl12 = if(!is.na(vcl12)){vcl12[1,1]}else{NA}
+    # table$unique.cl1 = M1
+    # table$unique.cl2 = M2
+    #
+    # cat("\n")
+    # return(table)
 
-    table$N = nrow(data)
-    table$mean.abnormal.ret = reg.summ$coef[1] # mean abnormal return
-    table$t.val.nonclustered = t.cl0 # non-clustered t
-    table$p.val.nonclustered = p.cl0 # p-value of tcl0
-    table$t.val.one.clustered = t.cl1 # 1-way custering t-value
-    table$p.val.one.clustered = p.cl1 # p-value of tcl1
-    table$tcl2 = t.cl2 # 1-way clustering t-val with respect to second clustering variable (NA if cluster2 = NULL)
-    table$pcl2 = p.cl2 # p-value of tcl2
-    table$tcl12 = t.cl12 # 2-way clustering t-value (NA if cluster2 = NULL)
-    table$pcl12 = p.cl12 # p-value of tcl12
-    table$cluster1 = cluster1
-    table$cluster2 = cluster2
+    return_list <- list(
+                N = nrow(data),
+                mean.abnormal.ret = reg.summ$coef[1], # mean abnormal return
+                t.val.nonclustered = t.cl0, # non-clustered t
+                p.val.nonclustered = p.cl0, # p-value of tcl0
+                t.val.one.clustered = t.cl1, # 1-way custering t-value
+                p.val.one.clustered = p.cl1, # p-value of tcl1
+                tcl2 = t.cl2, # 1-way clustering t-val with respect to second clustering variable (NA if cluster2 = NULL)
+                pcl2 = p.cl2, # p-value of tcl2
+                tcl12 = t.cl12, # 2-way clustering t-value (NA if cluster2 = NULL)
+                pcl12 = p.cl12, # p-value of tcl12
+                cluster1 = if(!is.null(cluster1)){cluster1}else{NA},
+                cluster2 = if(!is.null(cluster2)){cluster2}else{NA},
+                reg.fit = reg.summ, # regression results on which t-value compuations are based
+                var.cl1 = vcl1,
+                var.cl2 = vcl2,
+                var.cl12 = vcl12,
+                unique.cl1 = M1,
+                unique.cl2 = M2
+    ) # list
+    class(return_list) <- c("crse", class(return_list))
+    return(return_list)
+}
 
-    # Variance of standard error -> mean / sqrt(vcl1) is t-val robust
-    table$var.cl1 = if(!is.na(vcl1)){vcl1[1,1]}else{NA}
-    table$var.cl2 = if(!is.na(vcl2)){vcl2[1,1]}else{NA}
-    table$var.cl12 = if(!is.na(vcl12)){vcl12[1,1]}else{NA}
-    table$unique.cl1 = M1
-    table$unique.cl2 = M2
+print.crse <- function(x, ...){
+  cat("Summary statistic: \n")
+  cat("------------------ \n")
+  cat("N \t \t \t", nrow(x), "\n")
+  cat("mean.abnormal.ret \t", x$mean.abnormal.ret, "\n")
+  cat("t.val.nonclustered \t", x$t.val.nonclustered, "\n")
+  cat("p.val.nonclustered \t", x$p.val.nonclustered, "\n")
+  cat("t.val.one.clustered \t", x$t.val.one.clustered, "\n")
+  cat("p.val.one.clustered \t", x$p.val.one.clustered, "\n")
+  cat("tcl2 \t \t \t", x$tcl2, "\n")
+  cat("pcl2 \t \t \t", x$pcl2, "\n")
+  cat("tcl12 \t \t \t", x$tcl12, "\n")
+  cat("pcl12 \t \t \t", x$pcl12, "\n")
+  cat("cluster1 \t \t", x$cluster1, "\n")
+  cat("cluster2 \t \t", x$cluster2, "\n")
+  cat("var.cl1 \t \t", x$var.cl1, "\n")
+  cat("var.cl2 \t \t", x$var.cl2, "\n")
+  cat("var.cl12 \t \t", x$var.cl12, "\n")
+  cat("unique.cl1 \t \t", x$unique.cl1, "\n")
+  cat("unique.cl2 \t \t", x$unique.cl2, "\n")
+}
 
-    cat("\n")
-    return(table)
-
+summary.crse <- function(object, ...){
+  return(print.crse(object))
 }

@@ -1,10 +1,11 @@
 context('functions')
 
 test_that('crseEvent', {
-  tmp <- crseEvent(data, cluster1 = "date")
+  tmp <- crseEvent(demo_returns, cluster1 = "date")
 
   # test for dimension of output
-  expect_equal(dim(tmp),as.integer(c(1,16)))
+  expect_equal(dim(tmp),NULL)
+  expect_equal(class(tmp), c("crse", "list"))
 
   expect_equal(tmp$N, 2340)
   expect_equal(tmp$unique.cl1, 145)
