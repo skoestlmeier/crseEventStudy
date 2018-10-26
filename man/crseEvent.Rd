@@ -2,7 +2,7 @@
 \alias{crseEvent}
 \title{Clustering robust t-statistics for ASR and CCAR type abnormal returns in long-horizon event studies}
 \description{
-  \code{crseEvent} implements a robust statistical test developed by Dutta et al. (JoEF, 2018).
+  \code{crseEvent} implements a robust statistical test developed by Dutta et al. (JempFin, 2018).
 
 The test is based on abnormal standardized returns and offers two implementations. Standardized returns are defined as \eqn{sr_{it} = \frac{r_{it}}{s_{it}}} where \eqn{s_{it}} is a standard deviation estimator of log returns \eqn{r_{it}}:
 

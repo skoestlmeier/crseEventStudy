@@ -1,9 +1,7 @@
 # crseEventStudy 1.0
 ## New features
 
-`crseEvent` implements the clustered robust standard error method for long-horizon event studies from Dutta et al. (2018, JempFin).
-
-*[A robust and powerful test of abnormal stock returns in long-horizon event studies](https://doi.org/10.1016/j.jempfin.2018.02.004)* by Anupam Dutta, Johan Knif, James W. Kolari and Seppo Pynnonen.
+`crseEvent` implements the clustered robust standard error methodology for long-horizon event studies developed by Dutta et al. (2018, JempFin).
 
 ## References
   Anupam Dutta, Johan Knif, James W. Kolari, Seppo Pynnonen (2018):

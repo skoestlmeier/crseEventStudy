@@ -1,4 +1,4 @@
-# monotonicity
+# crseEventStudy
 
 Overview
 --------
@@ -10,10 +10,10 @@ Overview
 [![Total Downloads](https://cranlogs.r-pkg.org/badges/grand-total/crseEventStudy?color=blue)](https://CRAN.R-project.org/package=crseEventStudy)
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 
-`crseEventStudy` is an R package providing a standardized test for abnormal returns in long-horizon event studies that takes into accoutncross-sectional correltaion, autocorrelation, and heteroskedasticity of stock returns. The test is proposed in the paper *[A robust and powerful test of abnormal stock returns in long-horizon event studies](https://doi.org/10.1016/j.jempfin.2018.02.004)* by Anupam Dutta, Johan Knif, James W. Kolari and Seppo Pynnonen.
+`crseEventStudy` is an R package providing a standardized test for abnormal returns in long-horizon event studies that takes into account the cross-sectional correlation, autocorrelation, and heteroskedasticity of stock returns. The test is proposed in the paper *[A robust and powerful test of abnormal stock returns in long-horizon event studies](https://doi.org/10.1016/j.jempfin.2018.02.004)* by Anupam Dutta, Johan Knif, James W. Kolari and Seppo Pynnonen (2018, JempFin).
 
 ### Key Features
-Functions for crseEventStudy for testing abnormal stock returns in long-horizon event studies:
+Functions of `crseEventStudy` for testing abnormal stock returns in long-horizon event studies:
 
 * crseEvent
 
@@ -29,7 +29,7 @@ devtools::install_github("skoestlmeier/crseEventStudy")
 ```
 Notes
 -----
-The method `crseEvent` is based on abnormal standardized returns and offers two implementations. Standardized returns are defined as \eqn{sr_{it} = \frac{r_{it}}{s_{it}}} where \eqn{s_{it}} is a standard deviation estimator of log returns \eqn{r_{it}}:
+The method `crseEvent` is based on abnormal standardized returns and offers two implementations. Standardized returns are defined as <a href="https://www.codecogs.com/eqnedit.php?latex=sr_{it}&space;=&space;\frac{r_{it}}{s_{it}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?sr_{it}&space;=&space;\frac{r_{it}}{s_{it}}" title="sr_{it} = \frac{r_{it}}{s_{it}}" /></a> where $\eqn{s_{it}}$ is a standard deviation estimator of log returns $\eqn{r_{it}}$:
 
 \strong{Use of Abnormal standardized returns (ASR)}
 
