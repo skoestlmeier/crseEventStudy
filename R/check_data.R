@@ -1,9 +1,9 @@
-###
-# Data-Frame noch testen, da auch character enthalten (und so alles umgewandelt wird!)
-#  Fehler in model.frame.default(formula = xdf[, abnr] ~ 1, data = xdf, drop.unused.levels = TRUE) :
-#  ungültiger Typ (list) für die Variable 'xdf[, abnr]'
-#
-###
+##############################################################################################
+## check if input data is in appropiate format and column for abnormal return series exists  #
+## Dependencies: none                                                                        #
+## as of September 28, 2018 (by Siegfried Köstlmeier, University of Regensburg, Germany)     #
+## Disclaimer: Absolutely no warranty.                                                       #
+##############################################################################################
 
 check_data <- function(data, abnr) {
       if(is(data,"data.frame")){

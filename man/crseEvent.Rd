@@ -36,35 +36,46 @@ crseEvent(data, abnr = "asr", cluster1 = "yyyymm",
 }
 
 \value{
-  \code{crseEvent} returns an object of \code{\link{class}} \code{"data.frame"}.
+  \code{crseEvent} returns an object of \code{\link{class}} \code{crse} and \code{list}.
 
-  The returning value of \code{"crseEvent"} is a \code{"data.frame"} containing the
+  The returning value of \code{"crseEvent"} is a \code{"list"} containing the
   following components:
 
-  \item{TopMinusBottom}{Mean difference return between top and bottom portfolio.}
-  \item{t_stat}{the residuals, that is response minus fitted values.}
-  \item{t_pval}{the fitted mean values.}
-  \item{MR_pval}{the numeric rank of the fitted linear model.}
-  \item{MRall_pval}{the numeric rank of the fitted linear model.}
-  \item{UP_pval}{studentized p-value from Patton and Timmermanns (JoE, 2010) "Up and Down" test for assumed increasing monotonicity pattern and using absolute difference returns.}
-  \item{DOWN_pval}{studentized p-value from Patton and Timmermanns (JoE, 2010) "Up and Down" test for assumed decreasing monotonicity pattern and using absolute difference returns.}
-  \item{Wolak_pval}{p-value "TestOnePvalueWolak" for \eqn{H0*} of Test 1 in \code{wolak.R}}
-  \item{Bonferroni_pval}{p-value for \eqn{H0*} of Test 1 from \code{monoBonferroni.R}.}
+  \item{N}{Total number of observations.}
+  \item{mean.abnormal.ret}{Mean abnormal return.}
+  \item{t.val.nonclustered}{Non-clustered (common) t-value.}
+  \item{p.val.nonclustered}{Non-clustered (common) p-value.}
+  \item{t.val.one.clustered}{One-way clustered t-value.}
+  \item{p.val.one.clustered}{One-way clustered p-value.}
+  \item{tcl2}{One-way clustering t-value with respect to second clustering variable (\code{\link{NA}} if cluster2 is \code{\link{NULL}}).}
+  \item{pcl2}{One-way clustering p-value with respect to second clustering variable (\code{\link{NA}} if cluster2 is \code{\link{NULL}}).}
+  \item{tcl12}{2-way clustering t-value (\code{\link{NA}} if cluster2 is \code{\link{NULL}}).}
+  \item{pcl12}{2-way clustering p-value (\code{\link{NA}} if cluster2 is \code{\link{NULL}}).}
+  \item{cluster1}{Name of the first cluster variable.}
+  \item{cluster2}{Name of the second cluster variable.}
+  \item{reg.fit}{Regression results on which t-value compuations are based.}
+  \item{var.cl1}{Robust variance of abnormal return series with regard to one-way clustering on variable \code{cluster1}.}
+  \item{var.cl2}{Robust variance of abnormal return series with regard to one-way clustering on variable \code{cluster2}.}
+  \item{var.cl12}{Robust variance of abnormal return series with regard to two-way clustering on both variable \code{cluster1} and \code{cluster2}.}
+  \item{unique.cl1}{Total number of unique observations by clustering on variable \code{cluster1}.}
+  \item{unique.cl2}{Total number of unique observations by clustering on variable \code{cluster2}.}
 }
 
 
 \references{
-  Patton, A. and Timmermann, A. (2010):
-  Monotonicity in asset returns: New testes with applications to the term structure, the CAPM, and portfolio sorts.
-  \emph{Journal of Financial Economics}, \bold{98}, No. 3, p. 605--625.
-  \doi{10.1016/0304-4076(89)90094-8}.
+  Dutta, A., Knif, J., Kolari, J.W., Pynnonen, S. (2018):
+  A robust and powerful test of abnormal stock returns in long-horizon event studies.
+  \emph{Journal of Empirical Finance}, \bold{47}, p. 1-24.
+  \doi{10.1016/j.jempfin.2018.02.004}.
 }
 
 \examples{
-## load daily non-difference return data.
-## test an increasing pattern of monotonicity
-\donttest{
+## load demo_returns
+## one-way clustering on column "date" and print summary statistics
 data(demo_returns)
-monoSummary(demo_returns, increasing = TRUE, block_length = 10)
-}
+crse <- crseEvent(demo_returns, cluster1 = "date")
+summary(crse)
+
+## print mean of abnormal return series
+crse$mean.abnormal.ret
 }

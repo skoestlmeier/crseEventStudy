@@ -29,15 +29,15 @@ devtools::install_github("skoestlmeier/crseEventStudy")
 ```
 Notes
 -----
-The method `crseEvent` is based on abnormal standardized returns and offers two implementations. Standardized returns are defined as <a href="https://www.codecogs.com/eqnedit.php?latex=sr_{it}&space;=&space;\frac{r_{it}}{s_{it}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?sr_{it}&space;=&space;\frac{r_{it}}{s_{it}}" title="sr_{it} = \frac{r_{it}}{s_{it}}" /></a> where $\eqn{s_{it}}$ is a standard deviation estimator of log returns $\eqn{r_{it}}$:
+Standardized returns are defined as the ratio of log-returns and their standard deviation estimator. The method `crseEvent` is based on abnormal standardized returns and offers two implementations:
 
-\strong{Use of Abnormal standardized returns (ASR)}
+* Abnormal standardized returns (ASR):
 
-Abnormal standardized returns are defined as \eqn{ASR_{it} = sr_{it} - sr_{ci,t}}, where \eqn{sr_{ci,t}} is the standardized return of the matching control firm or the average of standardized returns of the matching control portfolio.
+  Abnormal standardized returns are defined as the excess standardized returns relative to the standardized return of a matching control firm or relative to the average of standardized returns of a matching control portfolio.
 
-\strong{Use of Continuously compounded abnormal returns (CCAR)}
+* Continuously compounded abnormal returns (CCAR):
 
-Continuously compounded abnormal returns are defined as \eqn{CCAR{it} = r_{it} - r_{ci,t}}, where \eqn{r_{it} = log(1 + R_{it}} is the event month \eqn{t} continuously compounded return (i.e., log return) of event stock \eqn{i}, and \eqn{r_{ci,t}} is the continuously compounded return of the control firm.
+  Continuously compounded abnormal returns first consider their relative performance. First, the monthly continuously compounded return (i.e., log return) of the event stock is subtracted by the continuously compounded return of the control firm (or control portfolio). Second, this resulting excess return is divided by a robust standard deviation estimator for the excess return.
 
 Contributing
 ------------

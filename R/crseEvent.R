@@ -2,9 +2,10 @@
 ## produces clustering robust t-statistics for ASR and CCAR type abnormal returns            #
 ## Dependencies: sandwich package                                                            #
 ## as of April 9, 2018 (by Seppo Pynnonen, University of Vaasa, Finland, sjp@uwasa.fi)       #
+## edited by Siegfried Köstlmeier, University of Regensburg, Germany                         #
 ## Disclaimer: Absolutely no warranty.                                                       #
 ##############################################################################################
-#
+
 crseEvent <- function(data, # data, containing abnormal returns (by series name defined in abnr) and clusering series
                         # named by cluster1 (and by cluste2 if two-way clustering)
                    abnr = "asr", # name of the abnormal return series in data (default asr)
@@ -12,9 +13,7 @@ crseEvent <- function(data, # data, containing abnormal returns (by series name 
                    cluster2 = NULL,   # second clustering variable in 2-way clustering (default is one way clustering)
                    na.rm = TRUE,
                    na.replace = 0
-                   ){# tabnr computes t-statistics related to abnormal returns as well cluster robust standard errors,
-                     # and t-values
-    ## produces clustering robust t-stats etc
+                   ){# crseEvent computes t-statistics related to abnormal returns as well cluster robust standard errors, and t-values
 
   if (missing(data)) {
     stop("Variable 'data' is missing.")
@@ -49,6 +48,7 @@ crseEvent <- function(data, # data, containing abnormal returns (by series name 
     warning("Missing return data are replaced with value defined in na.replace.")
   }
 
+  # produces clustering robust t-stats etc
     fm <- lm(data[, abnr] ~ 1, data = data)
     if(is.null(cluster1)) {
         if(!is.null(cluster2)) cluster1 <- cluster2 # switch if one way clustering indicated by cluster2
@@ -79,37 +79,6 @@ crseEvent <- function(data, # data, containing abnormal returns (by series name 
         } # if cluster and cluster2
     } # if cluster1
 
-
-    # table <- as.data.frame(matrix(nrow = 1, ncol = 17))
-    # colnames(table) <- c("N", "mean.abnormal.ret", "t.val.nonclustered", "p.val.nonclustered",
-    #                      "t.val.one.clustered", "p.val.one.clustered", "tcl2", "pcl2", "tcl12",
-    #                      "pcl12", "cluster1", "cluster2", "var.cl1", "var.cl2", "var.cl12",
-    #                      "unique.cl1", "unique.cl2")
-    #
-    #
-    # table$N = nrow(data)
-    # table$mean.abnormal.ret = reg.summ$coef[1] # mean abnormal return
-    # table$t.val.nonclustered = t.cl0 # non-clustered t
-    # table$p.val.nonclustered = p.cl0 # p-value of tcl0
-    # table$t.val.one.clustered = t.cl1 # 1-way custering t-value
-    # table$p.val.one.clustered = p.cl1 # p-value of tcl1
-    # table$tcl2 = t.cl2 # 1-way clustering t-val with respect to second clustering variable (NA if cluster2 = NULL)
-    # table$pcl2 = p.cl2 # p-value of tcl2
-    # table$tcl12 = t.cl12 # 2-way clustering t-value (NA if cluster2 = NULL)
-    # table$pcl12 = p.cl12 # p-value of tcl12
-    # table$cluster1 = cluster1
-    # table$cluster2 = cluster2
-    #
-    # # Variance of standard error -> mean / sqrt(vcl1) is t-val robust
-    # table$var.cl1 = if(!is.na(vcl1)){vcl1[1,1]}else{NA}
-    # table$var.cl2 = if(!is.na(vcl2)){vcl2[1,1]}else{NA}
-    # table$var.cl12 = if(!is.na(vcl12)){vcl12[1,1]}else{NA}
-    # table$unique.cl1 = M1
-    # table$unique.cl2 = M2
-    #
-    # cat("\n")
-    # return(table)
-
     return_list <- list(
                 N = nrow(data),
                 mean.abnormal.ret = reg.summ$coef[1], # mean abnormal return
@@ -129,11 +98,12 @@ crseEvent <- function(data, # data, containing abnormal returns (by series name 
                 var.cl12 = vcl12,
                 unique.cl1 = M1,
                 unique.cl2 = M2
-    ) # list
+    ) # return_list
     class(return_list) <- c("crse", class(return_list))
     return(return_list)
 }
 
+#S3methods
 print.crse <- function(x, ...){
   cat("Summary statistic: \n")
   cat("------------------ \n")
