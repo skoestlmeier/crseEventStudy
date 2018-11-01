@@ -8,7 +8,7 @@
 
 crseEvent <- function(data, # data, containing abnormal returns (by series name defined in abnr) and clusering series
                         # named by cluster1 (and by cluste2 if two-way clustering)
-                   abnr = "asr", # name of the abnormal return series in data (default asr)
+                   abnr = "ars", # name of the abnormal return series in data (default ars)
                    cluster1 = "yyyymm", # first clustering series name in data (default yyyymm, i.e., year month yyyymm)
                    cluster2 = NULL,   # second clustering variable in 2-way clustering (default is one way clustering)
                    na.rm = TRUE,

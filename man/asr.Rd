@@ -1,18 +1,14 @@
-\name{crseEvent}
-\alias{crseEvent}
-\title{Clustering robust t-statistics for abnormal returns in long-horizon event studies}
+\name{asr}
+\alias{asr}
+\title{Clustering robust t-statistics for ASR and CCAR type abnormal returns in long-horizon event studies}
 \description{
-  \code{crseEvent} implements a robust statistical test developed by Dutta et al. (JempFin, 2018).
+  \code{asr} implements a robust statistical test developed by Dutta et al. (JempFin, 2018).
 
-The test is based on abnormal standardized returns and offers three implementations. Standardized returns are defined as \eqn{sr_{it} = \frac{r_{it}}{s_{it}}} where \eqn{s_{it}} is a standard deviation estimator of log returns \eqn{r_{it}}:
+The test is based on abnormal standardized returns and offers two implementations. Standardized returns are defined as \eqn{sr_{it} = \frac{r_{it}}{s_{it}}} where \eqn{s_{it}} is a standard deviation estimator of log returns \eqn{r_{it}}:
 
 \strong{Use of Abnormal standardized returns (ASR)}
 
 Abnormal standardized returns are defined as \eqn{ASR_{it} = sr_{it} - sr_{ci,t}}, where \eqn{sr_{ci,t}} is the standardized return of the matching control firm or the average of standardized returns of the matching control portfolio.
-
-\strong{Use of Standardized abnormal returns (SAR)}
-
-Standardized abnormal returns are defined as \eqn{SAR_{it} = \frac{r_{event} - r_{control}}{sd_{event-control}}}. The matching control return should be derived from a single firm observation and not be the return-series of a portfolio.
 
 \strong{Use of Continuously compounded abnormal returns (CCAR)}
 
@@ -20,14 +16,14 @@ Continuously compounded abnormal returns are defined as \eqn{CCAR{it} = r_{it} -
 
 }
 \usage{
-crseEvent(data, abnr = "ars", cluster1 = "yyyymm",
+crseEvent(data, abnr = "asr", cluster1 = "yyyymm",
   cluster2 = NULL, na.rm = TRUE, na.replace = 0)
 }
 \arguments{
   \item{data}{an object of class \code{"\link{data.frame}"} (or one that
     can be coerced to that class)}
 
-  \item{abnr}{Name of a column from \code{data} which contains abnormal standardized returns (ASR), standardized abnormal returns (SAR) or continuously compounded abnormal returns (CCAR).}
+  \item{abnr}{Name of a column from \code{data} which contains abnormal standardized returns (ASR) or continuously compounded abnormal returns (CCAR).}
 
   \item{cluster1}{Name of a column from \code{data} which contains the primarely cluster-variables for the observations.}
 

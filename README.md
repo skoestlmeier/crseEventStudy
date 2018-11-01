@@ -29,11 +29,15 @@ devtools::install_github("skoestlmeier/crseEventStudy")
 ```
 Notes
 -----
-Standardized returns are defined as the ratio of log-returns and their standard deviation estimator. The method `crseEvent` is based on abnormal standardized returns and offers two implementations:
+Standardized returns are defined as the ratio of log-returns and their standard deviation estimator. The method `crseEvent` is based on abnormal standardized returns and offers three implementations:
 
 * **Abnormal standardized returns (ASR)**
 
   Abnormal standardized returns are defined as the excess standardized returns relative to the standardized return of a matching control firm or relative to the average of standardized returns of a matching control portfolio.
+
+* **Standardized abnormal returns (SAR)**
+
+  Standardized abnormal returns are defined as the excess event-return relative to a specific  return of a matching control firm, and the remaining result subsequently divided by the standard variation of this excess return series. As stated on p. 3f. in [Dutta et al. (2018, JempFin)](https://doi.org/10.1016/j.jempfin.2018.02.004), the matching control-return should be a single firm return-series and not be a portfolio-return.
 
 * **Continuously compounded abnormal returns (CCAR)**
 
