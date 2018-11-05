@@ -16,7 +16,7 @@ Standardized abnormal returns are defined as \eqn{SAR_{it} = \frac{r_{event} - r
 
 \strong{Use of Continuously compounded abnormal returns (CCAR)}
 
-Continuously compounded abnormal returns are defined as \eqn{CCAR{it} = r_{it} - r_{ci,t}}, where \eqn{r_{it} = log(1 + R_{it}} is the event month \eqn{t} continuously compounded return (i.e., log return) of event stock \eqn{i}, and \eqn{r_{ci,t}} is the continuously compounded return of the control firm.
+Continuously compounded abnormal returns are defined as \eqn{CCAR_{it} = r_{it} - r_{ci,t}}, where \eqn{r_{it} = log(1 + R_{it})} is the event month \eqn{t} continuously compounded return (i.e., log-return) of event stock \eqn{i}, and \eqn{r_{ci,t}} is the continuously compounded return of the control firm.
 
 }
 \usage{
@@ -35,7 +35,7 @@ crseEvent(data, abnr = "ars", cluster1 = "yyyymm",
 
   \item{na.rm}{An object of class \code{"\link{logical}"}: If \code{na.rm} is TRUE, missing observations for the item \code{abnr} will be removed from the dataset. Otherwise missing oberservations will be replaced with a value defined in \code{na.replace}}
 
-  \item{na.replace}{A numeric scalar: If \code{data} contains missing observations for the abnormal return series ASR or CCAR, these missing return values will be overritten with the value of \code{na.replace}}
+  \item{na.replace}{A numeric scalar: If \code{data} contains missing observations for the abnormal return series ASR or CCAR and \code{na.rm} is FALSE, these missing return values will be overritten with the value of \code{na.replace}}
 
 }
 
@@ -74,10 +74,10 @@ crseEvent(data, abnr = "ars", cluster1 = "yyyymm",
 }
 
 \examples{
-## load demo_returns
+## load demo_share_repurchases
 ## one-way clustering on column "date" and print summary statistics
-data(demo_returns)
-crse <- crseEvent(demo_returns, cluster1 = "date")
+data(demo_share_repurchases)
+crse <- crseEvent(demo_share_repurchases, abnr="ars", cluster1 = "date")
 summary(crse)
 
 ## print mean of abnormal return series

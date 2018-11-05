@@ -18,6 +18,10 @@ sar <- function(event,          # data, containing event returns
     stop("The variable 'logret' must be logical.")
   }
 
+  if(!(length(event)==length(control))){
+    stop("Return series have different length.")
+  }
+
   if(isFALSE(logret)){
     event <- log(1+event)
     control <- log(1+control)
