@@ -35,7 +35,7 @@ crseEvent(data, abnr = "ars", cluster1 = "yyyymm",
 
   \item{na.rm}{An object of class \code{"\link{logical}"}: If \code{na.rm} is TRUE, missing observations for the item \code{abnr} will be removed from the dataset. Otherwise missing oberservations will be replaced with a value defined in \code{na.replace}}
 
-  \item{na.replace}{A numeric scalar: If \code{data} contains missing observations for the abnormal return series ASR or CCAR and \code{na.rm} is FALSE, these missing return values will be overritten with the value of \code{na.replace}}
+  \item{na.replace}{A numeric scalar: If \code{data} contains missing observations for the abnormal return series and \code{na.rm} is FALSE, these missing return values will be overritten with the value of \code{na.replace}}
 
 }
 

@@ -15,7 +15,9 @@ Overview
 ### Key Features
 Functions of `crseEventStudy` for testing abnormal stock returns in long-horizon event studies:
 
-* crseEvent
+* asr (abnormal standardizes returns)
+* crseEvent (clustered robust standard errors in long-horizon event studies)
+* sar (standardized abnormal returns)
 
 Installation
 ------------
