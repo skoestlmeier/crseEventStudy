@@ -8,6 +8,6 @@ Description: Based on Dutta et al. (2018) <doi:10.1016/j.jempfin.2018.02.004>, t
 License: BSD_3_clause + file LICENSE
 Imports: methods, stats, sandwich
 Suggests: testthat
-Depends: R (>= 3.4)
+Depends: R (>= 3.5)
 Encoding: UTF-8
 LazyData: true
