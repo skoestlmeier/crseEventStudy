@@ -1,3 +1,8 @@
+# crseEventStudy 1.1
+## New features
+
+* Minor bug-fixes in documentation and references.
+
 # crseEventStudy 1.0
 ## New features
 
