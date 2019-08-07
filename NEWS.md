@@ -1,3 +1,8 @@
+# crseEventStudy 1.2
+## New features
+
+* Added more test-cases (testthat) for further development.
+
 # crseEventStudy 1.1
 ## New features
 

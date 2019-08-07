@@ -3,6 +3,18 @@ context('functions')
 test_that('crseEvent', {
   tmp <- crseEvent(demo_share_repurchases, abnr = "ars", cluster1 = "date")
 
+  expect_error(crseEvent(abnr = "ars", cluster1 = "date"))
+  expect_error(crseEvent(data = demo_share_repurchases, abnr = "ars", cluster1 = "date", na.rm = "FALSE"))
+  expect_error(crseEvent(data = demo_share_repurchases, abnr = "ars", cluster1 = "date", na.replace = "0"))
+  
+  test <- as.data.frame(matrix(c(NA, NA, 1, 1), ncol = 2))
+  colnames(test) <- c("first", "second")
+  expect_error(crseEvent(data = test, abnr = "first", cluster1 = "date", na.rm = TRUE))
+  
+  expect_warning(crseEvent(data = demo_share_repurchases, abnr = "ars", cluster1 = "date", na.rm = FALSE, na.replace = 0))
+  
+  expect_null(print(tmp))
+  
   expect_equal(dim(tmp),NULL)
   expect_equal(class(tmp), c("crse", "list"))
   expect_equal(length(tmp), 18)

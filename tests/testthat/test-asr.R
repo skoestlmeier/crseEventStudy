@@ -2,7 +2,12 @@ context('functions')
 
 test_that('asr', {
   tmp <- asr(event = demo_returns$EON, control = demo_returns$RWE, logret = FALSE)
-
+  
+  expect_error(asr(control = demo_returns$RWE, logret = FALSE))
+  expect_error(asr(event = demo_returns$EON, logret = FALSE))
+  expect_error(asr(event = demo_returns$EON, control = demo_returns$RWE, logret = "FALSE"))
+  
+  expect_error(asr(event = c(demo_returns$RWE, 1), control = demo_returns$RWE, logret = FALSE))
   expect_equal(dim(tmp),NULL)
   expect_equal(class(tmp), c("numeric"))
   expect_equal(length(tmp), 760)
