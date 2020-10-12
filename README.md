@@ -4,7 +4,7 @@ Overview
 --------
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/crseEventStudy)](https://cran.r-project.org/package=crseEventStudy)
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Travis-CI Build Status](https://travis-ci.org/skoestlmeier/crseEventStudy.svg?branch=master)](https://travis-ci.org/skoestlmeier/crseEventStudy)
+[![Travis-CI Build Status](https://travis-ci.com/skoestlmeier/crseEventStudy.svg?branch=master)](https://travis-ci.com/skoestlmeier/crseEventStudy)
 [![Build status](https://ci.appveyor.com/api/projects/status/nsrpduvdn28gf78r?svg=true)](https://ci.appveyor.com/project/skoestlmeier/crseEventStudy)
 [![codecov](https://codecov.io/gh/skoestlmeier/crseEventStudy/branch/master/graph/badge.svg)](https://codecov.io/gh/skoestlmeier/crseEventStudy)
 [![Total Downloads](https://cranlogs.r-pkg.org/badges/grand-total/crseEventStudy?color=blue)](https://CRAN.R-project.org/package=crseEventStudy)
