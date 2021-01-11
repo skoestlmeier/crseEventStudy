@@ -1,3 +1,7 @@
+# crseEventStudy 1.2.1
+
+* Updated DOI due to CRAN hyperlinking issues.
+
 # crseEventStudy 1.2
 
 * Added more test-cases (testthat) for further development.
