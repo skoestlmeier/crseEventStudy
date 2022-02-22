@@ -24,4 +24,4 @@ e3508b85890ffb1807b001ed41832fce *tests/testthat/test-crseEvent.R
 a612b6bc497c4ee592dbf900ccec02d2 *tests/testthat/test-sar.R
 f01d5699f7daf08ae738ec30ea17e79d *tests/testthat/test-check_data.R
 366860f29ef456f107eee14b993a78e7 *data/demo_returns.rda
-dec0af4183e4821ffd570e9861865ca6 *data/demo_share_repurchases.rda
+dec0af4183e4821ffd570e9861865ca6 *data/demo_share_repurchases.rda 
