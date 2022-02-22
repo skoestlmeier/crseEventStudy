@@ -10,7 +10,7 @@ asr <- function(event,          # data, containing event returns
                 logret = FALSE  # logical, TRUE if return series are log-returns
                 ){# asr computes abnormal standardized returns
 
-  if (missing(event) | missing(control)) {
+  if (missing(event) || missing(control)) {
     stop("Return series is missing.")
   }
 

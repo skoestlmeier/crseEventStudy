@@ -1,3 +1,7 @@
+# crseEventStudy 1.2.2
+
+* Updated due to CRAN LENGTH_1 issues.
+
 # crseEventStudy 1.2.1
 
 * Updated DOI due to CRAN hyperlinking issues.
